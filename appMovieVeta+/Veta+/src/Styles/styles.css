@@ -19,7 +19,7 @@ body {
   }
   
   .card, .review-card {
-    background: rgb(252, 252, 252);
+    background: rgba(170, 99, 99, 0.354);
     border-radius: 10px;
     margin: 10px;
     padding: 15px;
@@ -52,3 +52,12 @@ body {
     }
   }
   
+  .logo-container {
+    text-align: center; /* Centra el logo */
+    margin-bottom: 50px; /* Espacio entre el logo y el formulario */
+}
+
+.logo {
+    width: 300px; /* Ajusta según tus necesidades */
+    height: auto; /* Mantiene la proporción */
+}

@@ -1,13 +1,16 @@
 import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import CardViews from './Components/CardViews.jsx';
 import SobreNosotros from './Components/SobreNosotros.jsx';
 import ReviewsPeliculas from './Components/ReviewsPeliculas.jsx';
+import InicioSesion from './Components/InicioSesion.jsx';
+import Formulario from './Components/Formulario.jsx';
 import Navbar from './Components/Navbar.jsx';
 import './App.css'
 
 const peliculas = [
-  { titulo: "Venom3", sinopsis: "En Venom: El Último Baile, Tom Hardy vuelve como Venom, uno de los más grandes y complejos personajes de Marvel, para cerrar su trilogía cinematográfica. Eddie y Venom están a la fuga. Perseguidos por sus sendos mundos y cada vez más cercados, el dúo se ve abocado a tomar una decisión devastadora que hará que caiga el telón sobre el último baile de Venom y Eddie.", poster: "/public/Imagenes/Venom3.jpg" },
-  { titulo: "Terrifier3", sinopsis: "Este año la Navidad llega antes.El payaso Art desata el caos entre los desprevenidos habitantes del condado de Miles mientras cogen el sueño plácidamente en Nochebuena.Tras sobrevivir a la masacre de Halloween perpetrada por el payaso Art, el peor asesino en serie desde Jack el Destripador, Sienna y su hermano se esfuerzan por reconstruir sus vidas destrozadas.", poster: "/public/Imagenes/Terrifier.png" },
+  { titulo: "Venom 3", sinopsis: "En Venom: El Último Baile, Tom Hardy vuelve como Venom, uno de los más grandes y complejos personajes de Marvel, para cerrar su trilogía cinematográfica. Eddie y Venom están a la fuga. Perseguidos por sus sendos mundos y cada vez más cercados, el dúo se ve abocado a tomar una decisión devastadora que hará que caiga el telón sobre el último baile de Venom y Eddie.", poster: "/public/Imagenes/Venom3.jpg" },
+  { titulo: "Terrifier 3", sinopsis: "Este año la Navidad llega antes.El payaso Art desata el caos entre los desprevenidos habitantes del condado de Miles mientras cogen el sueño plácidamente en Nochebuena.Tras sobrevivir a la masacre de Halloween perpetrada por el payaso Art, el peor asesino en serie desde Jack el Destripador, Sienna y su hermano se esfuerzan por reconstruir sus vidas destrozadas.", poster: "/public/Imagenes/Terrifier.png" },
   { titulo: "Halloween KILLS", sinopsis: "Laurie y su hija Karen descubren que Michael sigue vivo y ha regresado a completar la matanza. Sin embargo, esta vez todas las víctimas supervivientes que Michael ha dejado en Haddonfield se unen para acabar para siempre con el monstruo.", poster: "/public/Imagenes/halloween_kills.jpg" },
   { titulo: "DEADPOOL 3", sinopsis: "Lobezno se recupera de sus heridas cuando se cruza con el bocazas, Deadpool, que ha viajado en el tiempo para curarlo con la esperanza de hacerse amigos y formar un equipo para acabar con un enemigo común.", poster: "/public/Imagenes/DeadPool.png"},
   { titulo: "Los Tres Infiernos", sinopsis: "Tras sobrevivir milagrosamente a un tiroteo policial, el trío de asesinos del clan Firefly es condenado a prisión. Captain Spaulding fallece en la cárcel, pero Otis, el líder del grupo, recluta a su primo Winslow para huir y liberar también a su hermana Baby.", poster: "/public/Imagenes/three_from_hell.jpg"},
@@ -49,14 +52,29 @@ const reviews = [
 
 const App = () => {
   return (
-    <div className="app">
-      <Navbar />
-      <CardViews peliculas={peliculas} />
-      <hr />
-      <ReviewsPeliculas reviews={reviews} />
-      <hr />
-      <SobreNosotros />
-    </div>
+    <Router>
+      <div className="app">
+        <Navbar />
+        <Routes>
+          
+          <Route path="/" element={
+            <>
+              <section id="cardviews">
+                <CardViews peliculas={peliculas} />
+                  </section>
+              <section id="reviews">
+                <ReviewsPeliculas reviews={reviews} />
+                  </section>
+            </>
+            } 
+            />
+          
+          <Route path="/Formulario" element={<Formulario />} />
+          <Route path="/InicioSesion" element={<InicioSesion />} />
+          <Route path="/SobreNosotros" element={<SobreNosotros />} />
+        </Routes>
+      </div>
+    </Router>
   );
 };
 
